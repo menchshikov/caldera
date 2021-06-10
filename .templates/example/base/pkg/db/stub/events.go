@@ -167,7 +167,7 @@ func (ep *eventsProvider) findByName(name string) ([]int, []*events.Item) {
 func (ep *eventsProvider) load() error {
 	ep.Data = make([]*events.Item, 0)
 	path := filepath.Join(ep.cfg.Fixtures.Dir, "events/data.json")
-	f, err := readFile(path)
+	f, err := readFile(path) //nolint:ifshort
 
 	if err != nil || f == nil {
 		return err
@@ -178,7 +178,7 @@ func (ep *eventsProvider) load() error {
 }
 
 func readFile(path string) (*os.File, error) {
-	_, err := os.Stat(path)
+	if _, err := os.Stat(path) //nolint:ifshort
 	// if file does not exist, return "empty data" without error
 	if os.IsNotExist(err) {
 		return nil, nil

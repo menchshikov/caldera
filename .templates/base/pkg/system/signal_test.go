@@ -101,8 +101,9 @@ func TestSignals(t *testing.T) {
 }
 
 func sendSignal(t *testing.T, ch <-chan system.SignalType, proc *os.Process, signal system.SignalType) {
-	err := proc.Signal(testSignal)
-	if err != nil {
+	t.Helper()
+
+	if err := proc.Signal(testSignal); err != nil {
 		t.Error("Sending signal:", err)
 
 		return
@@ -114,6 +115,8 @@ func sendSignal(t *testing.T, ch <-chan system.SignalType, proc *os.Process, sig
 }
 
 func verifySignal(t *testing.T, signal os.Signal, signals []os.Signal, sigType system.SignalType) {
+	t.Helper()
+
 	if !isSignalAvailable(signal, signals) {
 		t.Error("Absent of the signal:", signal, "among", sigType, "signal type")
 	}

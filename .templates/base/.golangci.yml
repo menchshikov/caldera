@@ -12,6 +12,10 @@ linters-settings:
       - appendAssign
   goimports:
     local-prefixes: {{[ .PrivateRepo ]}}
+  cyclop:
+    max-complexity: 20
+    package-average: 0.0
+    skip-tests: false
 
 linters:
   presets:
@@ -61,7 +65,6 @@ linters:
     - nestif
     - nlreturn
     - noctx
-    - nolintlint
     - prealloc
     - rowserrcheck
     - scopelint
@@ -75,13 +78,16 @@ linters:
     - unparam
     - unused
     - varcheck
-    - wrapcheck
     - whitespace
     - wsl
   disable:
     - gci
     - gofumpt
     - exhaustivestruct
+    - wrapcheck
+    - nolintlint
+    - forbidigo
+    - paralleltest
 
 service:
   golangci-lint-version: {{[ .Linter.Version ]}} # use the fixed version to not introduce new linters unexpectedly

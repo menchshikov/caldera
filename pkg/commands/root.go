@@ -67,14 +67,8 @@ func init() {
 	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is ./default.yaml)")
 	RootCmd.PersistentFlags().String("templates", ".templates", "templates dir")
 	RootCmd.PersistentFlags().String("service", "", "A boilerplate service repository dir")
-	helper.LogF(
-		"Flag error",
-		viper.BindPFlag("directories.templates", RootCmd.PersistentFlags().Lookup("templates")),
-	)
-	helper.LogF(
-		"Flag error",
-		viper.BindPFlag("directories.service", RootCmd.PersistentFlags().Lookup("service")),
-	)
+	helper.LogF("Flag error", viper.BindPFlag("directories.templates", RootCmd.PersistentFlags().Lookup("templates")))
+	helper.LogF("Flag error", viper.BindPFlag("directories.service", RootCmd.PersistentFlags().Lookup("service")))
 }
 
 // initConfig reads in config file and ENV variables if set.

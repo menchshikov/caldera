@@ -18,6 +18,8 @@ var ErrReturnError = errors.New("test of return Error")
 func testHandler(
 	t *testing.T, handler http.Handler, method, path string, code int, body string,
 ) {
+	t.Helper()
+
 	req, err := http.NewRequestWithContext(context.Background(), method, path, nil)
 	if err != nil {
 		t.Error(err)
@@ -134,9 +136,7 @@ func TestInfo(t *testing.T) {
 
 func TestRun(t *testing.T) {
 	service := info.NewService(logger.New(new(logger.Config)))
-	h := service.Run(":0")
-
-	if h == nil {
+	if h := service.Run(":0"); h == nil {
 		t.Error("Expected HTTP handler, got nil")
 	}
 }

@@ -50,7 +50,7 @@ HAS_IMPORTS := $(shell command -v goimports;)
 
 bootstrap:
 ifndef HAS_LINT
-	go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.32.2
+	go get github.com/golangci/golangci-lint/cmd/golangci-lint@v1.40.1
 endif
 ifndef HAS_IMPORTS
 	go get -u golang.org/x/tools/cmd/goimports

@@ -22,9 +22,7 @@ func TestStubHandling(t *testing.T) {
 		t.Error("Expected error", system.ErrNotImplemented, "got", err)
 	}
 
-	errs := operator.Shutdown()
-
-	if len(errs) > 0 {
+	if errs := operator.Shutdown(); len(errs) > 0 {
 		t.Error("Expected success, got errors", errs)
 	}
 }
