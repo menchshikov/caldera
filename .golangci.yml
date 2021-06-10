@@ -10,6 +10,10 @@ linters-settings:
   gocritic:
     disabled-checks:
       - appendAssign
+  cyclop:
+    max-complexity: 20
+    package-average: 0.0
+    skip-tests: false
 
 linters:
   presets:
@@ -59,7 +63,6 @@ linters:
     - nestif
     - nlreturn
     - noctx
-    - nolintlint
     - prealloc
     - rowserrcheck
     - scopelint
@@ -73,13 +76,16 @@ linters:
     - unparam
     - unused
     - varcheck
-    - wrapcheck
     - whitespace
     - wsl
   disable:
     - gci
     - gofumpt
     - exhaustivestruct
+    - wrapcheck
+    - nolintlint
+    - forbidigo
+    - paralleltest
 
 service:
   golangci-lint-version: 1.32.x # use the fixed version to not introduce new linters unexpectedly
