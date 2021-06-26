@@ -1,4 +1,4 @@
 .idea/
 /caldera
 /vendor
-/default.yaml
+#/default.yaml
