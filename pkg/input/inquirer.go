@@ -11,16 +11,16 @@ import (
 // Inquire for configuration.
 // nolint: funlen, gocognit
 func Inquire(cfg *config.Config) *config.Config {
-	cfg.Github = StringAnswer("Provide name for your Github account", cfg.Github)
+	cfg.Github = StringAnswer("Provide name for your Bitbucket account", cfg.Github)
 	cfg.Namespace = StringAnswer("Provide a name for your module or namespace", cfg.Namespace)
 	cfg.Name = StringAnswer("Provide a name for your service", cfg.Name)
 	cfg.Description = StringAnswer("Provide description for your service",
 		strings.Title(strings.NewReplacer("-", " ", ".", " ", "_", " ").Replace(cfg.Name)))
-	cfg.Project = StringAnswer("Provide project name", path.Join("github.com", cfg.Github, cfg.Name))
+	cfg.Project = StringAnswer("Provide project name", path.Join("bitbucket.org", cfg.Github, cfg.Name))
 	cfg.PrivateRepo = StringAnswer(
 		"Provide private repositories for import if applicable",
 		strings.Join(strings.Fields(strings.ReplaceAll(
-			path.Join("github.com", cfg.Github)+","+cfg.PrivateRepo, ",", " ",
+			path.Join("bitbucket.org", cfg.Github)+","+cfg.PrivateRepo, ",", " ",
 		)), ","),
 	)
 	cfg.Bin = StringAnswer("Provide binary file name", cfg.Name)
